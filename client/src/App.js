@@ -48,11 +48,6 @@ const FIELD_LABELS = {
 // 需要数字比较的栏
 const NUMBER_FIELDS = ['birthDate'];
 
-function splitTags(str) {
-  if (!str || str === '数据未收录') return ['数据未收录'];
-  return str.trim().split(/\s+/);
-}
-
 // 计算年龄函数
 function calcAge(birthDate) {
   if (!birthDate || birthDate === '数据未收录') return '数据未收录';
@@ -153,16 +148,6 @@ function renderTableCell(field, guess, target) {
   }
 }
 
-function getTagChipProps(field, tag, guessTags, targetTags) {
-  // 只要不是数字栏，且命中就绿色高亮
-  if (!NUMBER_FIELDS.includes(field) && ((tag === '数据未收录' && targetTags.length === 1 && targetTags[0] === '数据未收录') || (tag !== '数据未收录' && targetTags.includes(tag)))) {
-    return {
-      sx: { backgroundColor: 'green', color: 'white', fontWeight: 'bold', fontSize: '0.95em' },
-      variant: 'filled'
-    };
-  }
-  return { sx: {}, variant: 'outlined' };
-}
 
 function App() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -178,10 +163,6 @@ function App() {
   const [gameCount, setGameCount] = useState(0); // 游戏计数
   const [hasLiuJindongAppeared, setHasLiuJindongAppeared] = useState(false); // 前五抽中是否已出刘锦东
   const [showLiuJindong, setShowLiuJindong] = useState(false); // 是否显示刘锦东特殊消息
-
-  useEffect(() => {
-    fetchAllCharacters();
-  }, []);
 
   const fetchAllCharacters = async () => {
     try {
@@ -248,6 +229,10 @@ function App() {
       console.error('Error fetching all characters:', error);
     }
   };
+
+  useEffect(() => {
+    fetchAllCharacters();
+  }, []);
 
   // 使用防抖优化搜索
   const debouncedSearch = debounce(async (value) => {
