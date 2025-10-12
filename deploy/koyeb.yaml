@@ -1,0 +1,24 @@
+name: kpl-guessr-backend
+service:
+  type: web
+  env: node
+  plan: starter
+  ports:
+    - port: 8080
+      protocol: http
+  routes:
+    - path: /
+      port: 8080
+  env:
+    - key: NODE_ENV
+      value: production
+    - key: PORT
+      value: 8080
+  build:
+    builder: node
+    buildCommand: npm install
+    startCommand: npm start
+  git:
+    repository: https://github.com/your-username/your-repo-name.git
+    branch: main
+    onPush: true

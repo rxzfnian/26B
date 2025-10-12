@@ -1,0 +1,12 @@
+node_modules
+npm-debug.log
+Dockerfile*
+.dockerignore
+.git
+.gitignore
+**/.DS_Store
+client/
+convert-csv-to-xlsx.js
+*.xlsx
+*.bat
+README.md

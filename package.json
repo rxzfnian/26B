@@ -1,0 +1,15 @@
+{
+  "name": "kpl-data-converter",
+  "version": "1.0.0",
+  "description": "KPL选手数据CSV转XLSX转换工具",
+  "main": "convert-csv-to-xlsx.js",
+  "scripts": {
+    "convert": "node convert-csv-to-xlsx.js"
+  },
+  "dependencies": {
+    "xlsx": "^0.18.5"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

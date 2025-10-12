@@ -1,0 +1,4 @@
+# Cloudflare Pages 重定向配置
+# 确保所有路由都指向index.html，支持React Router
+
+/*    /index.html   200
