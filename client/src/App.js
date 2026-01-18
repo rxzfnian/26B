@@ -100,7 +100,7 @@ function renderTableCell(field, guess, target) {
         </span>
       </TableCell>
     );
-  } else if (field === 'gender' || field === 'location') {
+  } else if (field === 'gender' || field === 'location' || field === 'grade') {
     // 性别和地区对了要标绿
     const isEqual = guess[field] === target[field];
     return (
